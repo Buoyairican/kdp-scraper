@@ -8,6 +8,7 @@ keyword variations for content planning.
 
 Usage:
     python main.py --title "Book Title Here"
+    python main.py --title "Book Title Here" --demo
     python main.py --resume       # Resume from last checkpoint
     python main.py --status       # Print pipeline status
     python main.py --reset        # Wipe state and start fresh
@@ -23,6 +24,62 @@ sys.path.insert(0, os.path.dirname(__file__))
 import config
 from src.state_manager import StateManager
 from src.logger import log
+
+
+def run_demo(seed_title: str) -> None:
+    """Print a no-network demo run that mirrors the real completion output."""
+    results = [
+        {
+            "verdict": "GO",
+            "label": "Assisted Living Facility Guides",
+            "winning_count": 5,
+            "authority_count": 2,
+        },
+        {
+            "verdict": "WATCH",
+            "label": "Senior Care Business",
+            "winning_count": 3,
+            "authority_count": 6,
+        },
+        {
+            "verdict": "SKIP",
+            "label": "Entrepreneurship",
+            "winning_count": 0,
+            "authority_count": 18,
+        },
+    ]
+    keywords = [
+        "assisted living facility startup",
+        "assisted living business plan",
+        "assisted living policies and procedures",
+        "residential care home business",
+        "senior care business startup",
+        "how to open an assisted living home",
+        "non medical home care business",
+        "elder care business guide",
+        "group home business startup",
+    ]
+
+    print(f"\nKDP Bestseller Pipeline")
+    print(f"  Provider : demo")
+    print(f"  Seed     : {seed_title[:70]}")
+    print(f"  State    : demo (no API calls)")
+    print()
+
+    print(f"\n{'='*60}")
+    print("PIPELINE COMPLETE")
+    print(f"{'='*60}")
+    for r in results:
+        print(
+            f"  {r['verdict']:5s} | {r['label']} "
+            f"(winning={r['winning_count']}, authority={r['authority_count']})"
+        )
+    print(f"\n  Keyword variations: 42")
+    print("  Top keywords:")
+    for kw in keywords:
+        print(f"    - {kw}")
+    print("  Output: output/results_demo.csv")
+    print(f"{'='*60}")
 
 
 def run_pipeline(state: StateManager) -> None:
@@ -113,7 +170,12 @@ def main() -> None:
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
     parser.add_argument("--status", action="store_true", help="Show pipeline status")
     parser.add_argument("--reset", action="store_true", help="Wipe state and restart")
+    parser.add_argument("--demo", action="store_true", help="Run with hardcoded demo output and no API calls")
     args = parser.parse_args()
+
+    if args.demo:
+        run_demo(args.title or "How To Start An Assisted Living Facility")
+        return
 
     state_file, output_dir = _session_paths(args.session)
     state = StateManager(state_file)
