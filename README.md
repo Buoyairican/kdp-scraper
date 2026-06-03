@@ -2,6 +2,17 @@ Topics: amazon-kdp · kdp-research · web-scraping · publisher-rocket-alternati
 
 # KDP Niche Research Pipeline
 
+![PyPI version](https://img.shields.io/pypi/v/kdp-scraper)
+![PyPI downloads](https://img.shields.io/pypi/dm/kdp-scraper)
+![License](https://img.shields.io/github/license/Buoyairican/kdp-scraper)
+![Stars](https://img.shields.io/github/stars/Buoyairican/kdp-scraper?style=social)
+
+## Quick Install
+
+```bash
+pip install kdp-scraper
+```
+
 Free KDP niche research pipeline for finding low competition book niches on Amazon. Use it as an open-source Publisher Rocket alternative / KDP Spy alternative when you want a scriptable Amazon bestseller scraper that turns seed titles into GO/WATCH/SKIP publishing signals.
 
 This KDP keyword research tool starts from a book title you've spotted, finds its category nodes, scans the top 100 books in each node, filters obvious low-content spam, and outputs verdicts with winning and authority counts for content planning.

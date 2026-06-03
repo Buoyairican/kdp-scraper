@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kdp-scraper"
+version = "0.1.0"
+description = "Free KDP niche research tool and Amazon bestseller scraper for low-competition book niches."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Buoyairican" }
+]
+keywords = [
+    "amazon-kdp",
+    "kdp-research",
+    "web-scraping",
+    "publisher-rocket-alternative",
+    "kindle-publishing",
+    "niche-research",
+    "passive-income",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Office/Business",
+    "Topic :: Text Processing :: Markup :: HTML",
+]
+dependencies = [
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "tenacity>=8.2.0",
+    "loguru>=0.7.0",
+    "pandas>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Buoyairican/kdp-scraper"
+Repository = "https://github.com/Buoyairican/kdp-scraper"
+Issues = "https://github.com/Buoyairican/kdp-scraper/issues"
+
+[project.scripts]
+kdp-scraper = "main:main"
+
+[tool.setuptools]
+py-modules = ["main", "config"]
+license-files = ["LICENSE"]
+
+[tool.setuptools.packages.find]
+include = ["src*"]
