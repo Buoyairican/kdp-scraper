@@ -6,6 +6,8 @@ Free KDP niche research pipeline for finding low competition book niches on Amaz
 
 This KDP keyword research tool starts from a book title you've spotted, finds its category nodes, scans the top 100 books in each node, filters obvious low-content spam, and outputs verdicts with winning and authority counts for content planning.
 
+![Demo](demo.gif)
+
 Sample output:
 
 | Category | Verdict | Winning books | Authority books | Signal |
